@@ -1,9 +1,11 @@
 from sqlalchemy import Column, String, Integer
 
-from models.model import Model
+from infrastructure.repository.models.model import Model
 
 
-class Unit(Model):
+class UnitModel(Model):
+    __tablename__ = 'unit'
+
     id = Column(Integer, primary_key=True, autoincrement=True)
 
     name = Column(String(140), nullable=False)

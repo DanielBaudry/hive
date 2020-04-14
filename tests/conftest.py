@@ -8,11 +8,11 @@ from flask_login import LoginManager, login_user
 from requests.auth import _basic_auth_str
 from sqlalchemy import orm
 
-from models.hive_unit import HiveUnit
-from models.planet import Planet
-from models.unit import Unit
-from models.user import User
-from repository.db import db
+from infrastructure.repository.models import HiveUnitModel
+from infrastructure.repository.models import Planet
+from infrastructure.repository.models import Unit
+from infrastructure.repository.models import User
+from infrastructure.repository.db import db
 
 
 def find_user_by_email(user_id: int) -> Optional[User]:
@@ -54,7 +54,7 @@ def app():
 
 def truncate_all_tables():
     db.session.query(Unit).delete()
-    db.session.query(HiveUnit).delete()
+    db.session.query(HiveUnitModel).delete()
     db.session.query(Planet).delete()
     db.session.query(User).delete()
     db.session.flush()

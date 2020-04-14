@@ -4,8 +4,8 @@ from flask import Flask
 from flask_login import LoginManager
 from sqlalchemy import orm
 
-from repository.db import db
-from repository.user import UserRepository
+from infrastructure.repository.db import db
+from infrastructure.repository.user import UserRepository
 
 app = Flask(__name__,
             template_folder='views',
@@ -25,7 +25,7 @@ db.init_app(app)
 login_manager.init_app(app)
 
 with app.app_context():
-    import controllers
+    import infrastructure.controllers
     orm.configure_mappers()
     db.create_all()
     db.session.commit()

@@ -3,10 +3,10 @@ from functools import wraps
 
 import bcrypt as bcrypt
 from flask import current_app as app, redirect, request, render_template, url_for, session
-from flask_login import login_required, logout_user, login_user, current_user
+from flask_login import login_required, logout_user, login_user
 
-from models.user import User
-from repository.user import UserRepository
+from infrastructure.repository.models.user import UserModel
+from infrastructure.repository.user import UserRepository
 
 
 @app.route("/logout")
@@ -34,7 +34,7 @@ def login():
 def signup():
     error = None
     if request.method == 'POST':
-        user = User()
+        user = UserModel()
         user.username = request.form['username']
         user.password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
         UserRepository().save(user)

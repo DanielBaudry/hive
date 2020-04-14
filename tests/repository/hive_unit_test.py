@@ -1,8 +1,8 @@
 import bcrypt
 
-from models.user import User
-from repository.hive_unit_repository import HiveUnitRepository
-from repository.user import UserRepository
+from infrastructure.repository.models import User
+from infrastructure.repository.hive_unit_repository import HiveUnitRepository
+from infrastructure.repository.user import UserRepository
 from tests.conftest import clean_database
 
 

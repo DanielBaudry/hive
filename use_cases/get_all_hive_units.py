@@ -1,8 +1,12 @@
 from typing import List
 
-from models.hive_unit import HiveUnit
-from repository.hive_unit_repository import HiveUnitRepository
+from domain.hive_unit import HiveUnit
+from domain.i_hive_unit_repository import IHiveUnitRepository
 
 
-def get_all_hive_units(user_id: int) -> List[HiveUnit]:
-    return HiveUnitRepository().get_all_hive_units_for_user(user_id)
+class GetAllHiveUnits:
+    def __init__(self, i_hive_unit_repository: IHiveUnitRepository):
+        self.i_hive_unit_repository = i_hive_unit_repository
+
+    def get_all_hive_units(self, user_id: int) -> List[HiveUnit]:
+        return self.i_hive_unit_repository.get_all_hive_units_for_user(user_id)
