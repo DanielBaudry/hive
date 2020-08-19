@@ -24,6 +24,20 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <div>
+            <ul class="list-group">
+                {% for resource in resources %}
+                <li class="list-group-item">
+                    <div>
+                        {{ resource.name }}
+                        {{ resource.amount }}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
     </div>
 </body>
 </html>

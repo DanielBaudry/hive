@@ -9,4 +9,4 @@ class SpawnNewHiveUnits:
         self.hive_unit_repostiory = hive_unit_repostiory
 
     def execute(self, user_id: int, unit_name: str, quantity: int) -> List[HiveUnit]:
-        return self.hive_unit_repostiory.add_hive_units(user_id=user_id, unit_name=unit_name, quantity=quantity)
+        return self.hive_unit_repostiory.save_hive_unit(user_id=user_id, unit_name=unit_name, quantity=quantity)

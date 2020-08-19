@@ -2,7 +2,6 @@ from abc import abstractmethod
 from typing import List
 
 from domain.hive_unit.hive_unit import HiveUnit
-from domain.unit.unit import Unit
 
 
 class HiveUnitRepository:
@@ -11,5 +10,5 @@ class HiveUnitRepository:
         pass
 
     @abstractmethod
-    def add_hive_units(self, user_id: int, unit_name: str, quantity: int):
+    def save_hive_unit(self, user_id: int, unit_name: str, quantity: int):
         pass
