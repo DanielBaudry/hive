@@ -1,0 +1,19 @@
+<html>
+<head>
+    <title>Unit page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="container">
+        <h1>Unit list</h1>
+        <div>
+            <ul class="list-group">
+                {% for unit in units %}
+                    <li class="list-group-item"> {{ unit.name }} </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

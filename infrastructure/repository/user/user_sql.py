@@ -1,10 +1,10 @@
 from flask_login import UserMixin
 from sqlalchemy import Column, String, Binary, Integer
 
-from infrastructure.repository.models.model import Model
+from infrastructure.repository.model import Model
 
 
-class UserModel(Model, UserMixin):
+class UserSQL(Model, UserMixin):
     __tablename__ = 'user'
 
     id = Column(Integer, primary_key=True, autoincrement=True)

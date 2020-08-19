@@ -5,8 +5,8 @@ import bcrypt as bcrypt
 from flask import current_app as app, redirect, request, render_template, url_for, session
 from flask_login import login_required, logout_user, login_user
 
-from infrastructure.repository.models.user import UserModel
-from infrastructure.repository.user import UserRepository
+from infrastructure.repository.user.user_sql import UserSQL
+from infrastructure.repository.user.user_sql_repository import UserRepository
 
 
 @app.route("/logout")
@@ -26,7 +26,7 @@ def login():
             error = 'Invalid Credentials. Please try again.'
             return render_template('login.html', error=error), 401
         login_user(user)
-        return redirect(url_for('get_all_units'))
+        return redirect(url_for('get_hive'))
     return render_template('login.html', error=error)
 
 
@@ -34,12 +34,12 @@ def login():
 def signup():
     error = None
     if request.method == 'POST':
-        user = UserModel()
+        user = UserSQL()
         user.username = request.form['username']
         user.password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
         UserRepository().save(user)
         login_user(user)
-        return redirect(url_for('get_all_units'))
+        return redirect(url_for('get_hive'))
     return render_template('signup.html', error=error)
 
 

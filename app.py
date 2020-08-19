@@ -5,10 +5,10 @@ from flask_login import LoginManager
 from sqlalchemy import orm
 
 from infrastructure.repository.db import db
-from infrastructure.repository.user import UserRepository
+from infrastructure.repository.user.user_sql_repository import UserRepository
 
 app = Flask(__name__,
-            template_folder='views',
+            template_folder='infrastructure/views',
             static_url_path='/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/hive.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False

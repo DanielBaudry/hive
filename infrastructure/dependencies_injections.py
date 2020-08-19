@@ -1,6 +1,13 @@
-from infrastructure.repository.hive_unit_repository import HiveUnitRepository
-from use_cases.get_all_hive_units import GetAllHiveUnits
+from infrastructure.repository.hive_unit.hive_unit_sql_repository import HiveUnitSQLRepository
+from infrastructure.repository.unit.unit_in_memory_repository import UnitInMemoryRepository
+from use_cases.list_all_hive_units import ListAllHiveUnits
+from use_cases.list_all_units import ListAllUnits
+from use_cases.spawn_new_hive_units import SpawnNewHiveUnits
 
+unit_repository = UnitInMemoryRepository()
+hive_unit_repository = HiveUnitSQLRepository(unit_repository=unit_repository)
 
-def provide_get_all_hive_units_use_case():
-    return GetAllHiveUnits(HiveUnitRepository())
+list_all_units = ListAllUnits(unit_repostiory=unit_repository)
+
+list_all_hive_units = ListAllHiveUnits(hive_unit_repostiory=hive_unit_repository)
+spawn_new_hive_units = SpawnNewHiveUnits(hive_unit_repostiory=hive_unit_repository)

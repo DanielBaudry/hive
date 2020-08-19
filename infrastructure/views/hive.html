@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Unit page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="container">
+        <h1>Hive</h1>
+        <div>
+            <ul class="list-group">
+                {% for unit in units %}
+                    <li class="list-group-item">
+                        <div>
+                            {{ unit.display_name }}
+                            {{ unit.quantity }}
+                        </div>
+                        <form id="add_hive_unit" action="/hiveunit" method="POST">
+                            <input name="unit_name" type="hidden" value="{{ unit.name }}">
+                            <input name="quantity" type="number" class="form-control">
+                            <input class="btn btn-success btn-block" type="submit" value="Spawn">
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,8 +1,8 @@
 import bcrypt
 
 from infrastructure.repository.models import User
-from infrastructure.repository.hive_unit_repository import HiveUnitRepository
-from infrastructure.repository.user import UserRepository
+from infrastructure.repository.hive_unit_repository import HiveUnitImpl
+from infrastructure.repository.user.user_sql_repository import UserRepository
 from tests.conftest import clean_database
 
 
@@ -14,7 +14,7 @@ class GetAllUnitsTest:
         user = UserRepository().save(user)
 
         # When
-        hive_units = HiveUnitRepository().get_all_hive_units_for_user(user.id)
+        hive_units = HiveUnitImpl().get_all_hive_units_for_user(user.id)
 
         # Then
         assert hive_units == []
