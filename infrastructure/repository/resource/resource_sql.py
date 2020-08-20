@@ -1,3 +1,6 @@
+from datetime import datetime
+from typing import Optional
+
 from sqlalchemy import Column, Integer, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 
@@ -19,7 +22,14 @@ class ResourceSQL(Model):
 
     amount = Column(Integer, nullable=False)
 
-    def __init__(self, user_id: int, name: str, amount: int = 0):
+    growth_rate = Column(Integer, nullable=False)
+
+    last_update = Column(Integer, nullable=False)
+
+    def __init__(self, user_id: int, name: str, amount: int = 0, growth_rate: int = 0,
+                 last_update: Optional[int] = None):
         self.userId = user_id
         self.name = name
         self.amount = amount
+        self.last_update = last_update if last_update else int(datetime.now().timestamp())
+        self.growth_rate = growth_rate

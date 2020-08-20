@@ -1,5 +1,5 @@
+from datetime import datetime
 from typing import List
-
 
 from domain.resource.resource import Resource
 from domain.resource.resource_repository import ResourceRepository
@@ -21,12 +21,17 @@ class ResourceSQLRepository(ResourceRepository):
             .filter(ResourceSQL.name == resource.name) \
             .first()
 
+        # TODO: delete
         if not user_resource:
             user_resource = ResourceSQL(
                 user_id=resource.user_id,
                 name=resource.name,
+                growth_rate=resource.growth_rate,
+                last_update=int(datetime.now().timestamp())
             )
 
         user_resource.amount = resource.amount
+        user_resource.last_update = resource.last_update
+
         db.session.add(user_resource)
         db.session.commit()

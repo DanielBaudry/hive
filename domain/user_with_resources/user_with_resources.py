@@ -34,3 +34,4 @@ class UserWithResources:
                 unit=unit,
             )
         hive_unit.increment_number(quantity)
+        self.hive_units.append(hive_unit)

@@ -7,4 +7,6 @@ def to_domain(resource_sql: ResourceSQL) -> Resource:
         name=resource_sql.name,
         user_id=resource_sql.userId,
         amount=resource_sql.amount,
+        last_update=resource_sql.last_update,
+        growth_rate=resource_sql.growth_rate,
     )

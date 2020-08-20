@@ -11,7 +11,8 @@ def serialize_resources(resources: List[Resource]) -> List[Dict]:
         serialized_resources.append(
             {
                 'name': resource.name.value,
-                'amount': resource.amount,
+                'amount': resource.real_time_amount,
+                'growth_rate': resource.growth_rate,
             }
         )
     return serialized_resources
