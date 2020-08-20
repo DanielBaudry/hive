@@ -2,7 +2,7 @@ from datetime import datetime
 
 
 class Resource:
-    def __init__(self, user_id: int, name: str, amount: int, growth_rate: int,
+    def __init__(self, user_id: int, name: str, amount: int, growth_rate: float,
                  last_update: int = int(datetime.now().timestamp())):
         self.user_id = user_id
         self.name = name
@@ -16,7 +16,7 @@ class Resource:
 
     @property
     def delta_growth(self) -> int:
-        return (int(datetime.now().timestamp()) - self.last_update) * self.growth_rate
+        return round((int(datetime.now().timestamp()) - self.last_update) * self.growth_rate)
 
     def is_enough(self, resource_cost: int) -> bool:
         return self.real_time_amount >= resource_cost

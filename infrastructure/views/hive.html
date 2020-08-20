@@ -8,7 +8,7 @@
     <div class="container">
         <h1>Hive</h1>
         <div>
-            <ul class="list-group">
+            <ul class="list-group list-group-horizontal">
                 {% for unit in units %}
                     <li class="list-group-item">
                         <div>
@@ -32,7 +32,7 @@
                     <div>
                         {{ resource.name }}
                         {{ resource.amount }}
-                        {{ resource.growth_rate }}
+                        +{{ resource.growth_rate }}
                     </div>
                 </li>
                 {% endfor %}

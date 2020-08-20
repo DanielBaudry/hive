@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import Column, Integer, ForeignKey, Enum
+from sqlalchemy import Column, Integer, ForeignKey, Enum, Float
 from sqlalchemy.orm import relationship
 
 from domain.resource.resource_type import ResourceType
@@ -22,7 +22,7 @@ class ResourceSQL(Model):
 
     amount = Column(Integer, nullable=False)
 
-    growth_rate = Column(Integer, nullable=False)
+    growth_rate = Column(Float, nullable=False)
 
     last_update = Column(Integer, nullable=False)
 
