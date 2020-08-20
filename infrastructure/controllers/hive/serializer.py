@@ -26,7 +26,10 @@ def serialize_hive_units(hive_units: List[HiveUnit], units: List[Unit]) -> List[
             {
                 'name': unit.name,
                 'display_name': unit.display_name,
+                'cost': unit.cost,
                 'quantity': quantity,
+                'life': unit.life,
+                'damage': unit.damage,
             }
         )
     return serialized_hive_units
