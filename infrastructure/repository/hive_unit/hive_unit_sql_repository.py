@@ -19,7 +19,7 @@ class HiveUnitSQLRepository(HiveUnitRepository):
         return [to_domain(hive_unit=hive_unit_model, unit_repository=self.unit_repository) for hive_unit_model in
                 hive_unit_models]
 
-    def save_hive_unit(self, user_id: int, unit_name: str, quantity: int):
+    def save(self, user_id: int, unit_name: str, quantity: int):
         user_hive_unit = HiveUnitSQL.query \
             .filter(HiveUnitSQL.userId == user_id) \
             .filter(HiveUnitSQL.unit_name == unit_name) \
@@ -31,6 +31,6 @@ class HiveUnitSQLRepository(HiveUnitRepository):
                 unit_name=unit_name
             )
 
-        user_hive_unit.quantity += quantity
+        user_hive_unit.quantity = quantity
         db.session.add(user_hive_unit)
         db.session.commit()

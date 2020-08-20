@@ -6,7 +6,7 @@ from flask import current_app as app, redirect, request, render_template, url_fo
 from flask_login import login_required, logout_user, login_user
 
 from infrastructure.repository.user.user_sql import UserSQL
-from infrastructure.repository.user.user_sql_repository import UserRepository
+from infrastructure.repository.user.user_sql_repository import UserSQLRepository
 
 
 @app.route("/logout")
@@ -20,8 +20,8 @@ def logout():
 def login():
     error = None
     if request.method == 'POST':
-        user = UserRepository().get_user_with_credentials(request.form['username'],
-                                                          request.form['password'])
+        user = UserSQLRepository().get_user_with_credentials(request.form['username'],
+                                                             request.form['password'])
         if not user:
             error = 'Invalid Credentials. Please try again.'
             return render_template('login.html', error=error), 401
@@ -37,7 +37,7 @@ def signup():
         user = UserSQL()
         user.username = request.form['username']
         user.password = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-        UserRepository().save(user)
+        UserSQLRepository().save(user)
         login_user(user)
         return redirect(url_for('get_hive'))
     return render_template('signup.html', error=error)

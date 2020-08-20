@@ -10,5 +10,5 @@ class HiveUnitRepository:
         pass
 
     @abstractmethod
-    def save_hive_unit(self, user_id: int, unit_name: str, quantity: int):
+    def save(self, user_id: int, unit_name: str, quantity: int):
         pass

@@ -1,6 +1,8 @@
 from infrastructure.repository.hive_unit.hive_unit_sql_repository import HiveUnitSQLRepository
 from infrastructure.repository.resource.resource_sql_repository import ResourceSQLRepository
 from infrastructure.repository.unit.unit_in_memory_repository import UnitInMemoryRepository
+from infrastructure.repository.user_with_resources.user_with_resources_sql_repository import \
+    UserWithResourcesSQLRepository
 from use_cases.get_user_ressources import GetUserResources
 from use_cases.list_all_hive_units import ListAllHiveUnits
 from use_cases.list_all_units import ListAllUnits
@@ -9,9 +11,14 @@ from use_cases.spawn_new_hive_units import SpawnNewHiveUnits
 unit_repository = UnitInMemoryRepository()
 hive_unit_repository = HiveUnitSQLRepository(unit_repository=unit_repository)
 resource_repository = ResourceSQLRepository()
+user_with_resources_sqlrepository = UserWithResourcesSQLRepository(
+    resource_repository=resource_repository,
+    hive_units_repository=hive_unit_repository,
+    unit_repository=unit_repository
+)
 
 list_all_units = ListAllUnits(unit_repostiory=unit_repository)
 
 list_all_hive_units = ListAllHiveUnits(hive_unit_repostiory=hive_unit_repository)
-spawn_new_hive_units = SpawnNewHiveUnits(hive_unit_repostiory=hive_unit_repository)
 get_user_resources = GetUserResources(resource_repository=resource_repository)
+spawn_new_hive_units = SpawnNewHiveUnits(user_with_resources_repository=user_with_resources_sqlrepository)

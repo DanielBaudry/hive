@@ -8,3 +8,7 @@ class ResourceRepository(ABC):
     @abstractmethod
     def get_resources(self, user_id: int) -> List[Resource]:
         pass
+
+    @abstractmethod
+    def save(self, resource: Resource):
+        pass

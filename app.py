@@ -5,7 +5,7 @@ from flask_login import LoginManager
 from sqlalchemy import orm
 
 from infrastructure.repository.db import db
-from infrastructure.repository.user.user_sql_repository import UserRepository
+from infrastructure.repository.user.user_sql_repository import UserSQLRepository
 
 app = Flask(__name__,
             template_folder='infrastructure/views',
@@ -18,7 +18,7 @@ login_manager = LoginManager()
 
 @login_manager.user_loader
 def load_user(user_id: int):
-    return UserRepository().get_user_by_id(user_id)
+    return UserSQLRepository().get_user_by_id(user_id)
 
 
 db.init_app(app)
