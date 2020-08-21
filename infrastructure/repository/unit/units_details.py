@@ -7,6 +7,7 @@ class UnitsInMemory(Enum):
         'cost': 10,
         'life': 40,
         'damage': 5,
+        'planet_force_only': False,
     }
 
     ROACH = {
@@ -14,6 +15,7 @@ class UnitsInMemory(Enum):
         'cost': 50,
         'life': 220,
         'damage': 20,
+        'planet_force_only': False,
     }
 
     HYDRALISK = {
@@ -21,6 +23,7 @@ class UnitsInMemory(Enum):
         'cost': 70,
         'life': 160,
         'damage': 40,
+        'planet_force_only': False,
     }
 
     ULTRALISK = {
@@ -28,4 +31,21 @@ class UnitsInMemory(Enum):
         'cost': 100,
         'life': 500,
         'damage': 50,
+        'planet_force_only': False,
+    }
+
+    MARINE = {
+        'display_name': 'Marine',
+        'cost': 50,
+        'life': 50,
+        'damage': 10,
+        'planet_force_only': True,
+    }
+
+    TANK = {
+        'display_name': 'Tank',
+        'cost': 120,
+        'life': 200,
+        'damage': 50,
+        'planet_force_only': True,
     }

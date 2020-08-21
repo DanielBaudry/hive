@@ -11,7 +11,7 @@ class UnitInMemoryRepository(UnitRepository):
         self.units = units
 
     def get_all_units(self) -> List[Unit]:
-        return [to_domain(unit) for unit in self.units]
+        return [to_domain(unit) for unit in self.units if unit.value['planet_force_only'] is False]
 
     def find_by_name(self, unit_name: str) -> Optional[Unit]:
         return to_domain(next(iter([unit for unit in self.units if unit.name == unit_name]), None))

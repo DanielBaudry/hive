@@ -7,5 +7,5 @@ class HiveUnit:
         self.unit = unit
         self.quantity = quantity
 
-    def increment_number(self, quantity):
+    def increment_number(self, quantity: int):
         self.quantity += quantity

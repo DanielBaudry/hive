@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Battle Map</h1>
+<div class="row">
+    <div class="col-md">
+        <ul class="list-group list-group-flush">
+            {% for unit in units %}
+                <li class="list-group-item">
+                    <span>{{ unit.display_name }}: <i>{{ unit.quantity }}</i></span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-md">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <span>Marines: <i>450</i></span>
+            </li>
+            <li class="list-group-item">
+                <span>Tank: <i>26</i></span>
+            </li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

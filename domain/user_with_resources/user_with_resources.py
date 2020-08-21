@@ -17,6 +17,9 @@ class UserWithResources:
         self.hive_units = hive_units
 
     def spawn_hive_unit(self, unit_name: str, quantity: int):
+        if quantity < 0:
+            return
+
         unit_to_spawn = next(iter([unit for unit in self.available_units if unit.name == unit_name]))
         resource_cost = quantity * unit_to_spawn.cost
         needed_unit_resource = next(

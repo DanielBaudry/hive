@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Univers</h1>
+    <ul class="list-group list-group-horizontal">
+        {% for planet in planets %}
+        <li class="list-group-item">
+            <strong>{{ planet.id }}</strong>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

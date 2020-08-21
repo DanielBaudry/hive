@@ -1,7 +1,7 @@
 from flask import current_app as app, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 
-from infrastructure.controllers.hive.serializer import serialize_hive_units, serialize_resources
+from infrastructure.controllers.serializer.hive_unit_serializer import serialize_hive_units, serialize_resources
 from infrastructure.dependencies_injections import list_all_hive_units, spawn_new_hive_units, list_all_units, \
     get_user_resources
 

@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>Hive page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="static/main.css" rel="stylesheet" media="screen">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+    {% block content %}{% endblock %}
+    </div>
+
+    <div class="row">
+        <div class="col-md-5">
+            <ul class="list-group list-group-horizontal">
+                {% for resource in resources %}
+                <li class="list-group-item">
+                    <div class="resource_{{ resource.name }}">
+                        <span>{{ resource.name }}</span>
+                        <span class="resource_amount">{{ resource.amount }}</span>
+                        +<span class="resource_rate">{{ resource.growth_rate }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-md-2">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <a href="/hive">Hive</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/univers">Univers</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/battlemap">Battle Map</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-5">
+            Production alerts + messages
+        </div>
+    </div>
+
+<script>
+    setInterval(function() {
+        let current_resource_amount = parseFloat($('.resource_Larves .resource_amount').html())
+        let current_resource_rate = parseFloat($('.resource_Larves .resource_rate').html())
+        let new_resource_amount = current_resource_amount + current_resource_rate
+        $('.resource_Larves .resource_amount').html(new_resource_amount.toFixed(1));
+    }, 1000);
+</script>
+</body>
+</html>

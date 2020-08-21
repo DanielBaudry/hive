@@ -1,6 +1,6 @@
 from flask import current_app as app, render_template
 
-from infrastructure.controllers.unit.serializer import serialize_units
+from infrastructure.controllers.serializer.unit_serializer import serialize_units
 from infrastructure.dependencies_injections import list_all_units
 
 
